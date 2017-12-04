@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>分页（方法级渲染）</title>
+    <!--插件-->
+    <link rel="stylesheet" type="text/css" href="css/layui.css">
+    <link rel="stylesheet" type="text/css" href="css/layui.mobile.css">
+    <script type="text/javascript" src='layui.all.js'></script>
+    <script type="text/javascript" src='jquery.min.js'></script>
+    <!--样式-->
+	<style>
+    </style>
+</head>
+<!--如果有其他的需求，只需要将标签属性名进行复制查找，就找相关的触发事件了-->
+<body>
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+  <legend>总页数大于页码总数</legend>
+</fieldset>
+<div id="demo1"></div>
+<script>
+	layui.use(['laypage', 'layer'], function(){
+	  var laypage = layui.laypage
+  
+	  //总页数大于页码总数
+	  laypage.render({
+		elem: 'demo1'
+		,count: 80 //数据总数
+		,jump: function(obj, first){
+			//首次不执行
+			if(!first){
+			  //do something
+			  //obj包含了当前分页的所有参数，比如：
+			  console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+			  console.log(obj.limit); //得到每页显示的条数
+			}
+     	},
+		layout : [ 'prev', 'page', 'next', 'skip', 'limit', 'count' ],
+	  });
+  	});
+</script>
+</body>
+</html>

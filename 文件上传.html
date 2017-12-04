@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>文件上传</title>
+<link rel="stylesheet" type="text/css" href="css/layui.css">
+</head>
+<body>
+ 
+<button type="button" class="layui-btn" id="test1">
+  <i class="layui-icon">&#xe67c;</i>上传图片
+</button>
+ 
+<!--js脚本-->
+<script type="text/javascript" src='layui.js'></script>
+<script type="text/javascript" src='jquery.min.js'></script>
+<!--脚本-->
+<script>
+layui.use('upload', function(){
+  var upload = layui.upload;
+   
+  //执行实例
+  var uploadInst = upload.render({
+    elem: '#test1' //绑定元素 所谓的回调，也就是将所需要的参数传到后台，然后后台利用这些参数将获取到的数据返回到前台显示
+    ,url: '' //上传接口
+    ,done: function(res){
+      //上传完毕回调
+    }
+    ,error: function(){
+      //请求异常回调
+    }
+  });
+});
+
+</script>
+</body>
+</html>
